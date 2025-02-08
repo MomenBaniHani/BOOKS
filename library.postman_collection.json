@@ -1,0 +1,426 @@
+{
+	"info": {
+		"_postman_id": "03b64a7d-386a-4dd0-978b-04e9286eb26c",
+		"name": "library",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40788670"
+	},
+	"item": [
+		{
+			"name": "add new book",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let newID =pm.variables.replaceIn('{{$randomInt}}')\r",
+							"\r",
+							"\r",
+							"let newName = pm.variables.replaceIn('{{$randomBankAccountName}}')\r",
+							"\r",
+							"let newTitle=pm.variables.replaceIn('{{$randomCompanyName}}')\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.collectionVariables.set(\"TheID\",newID)\r",
+							"\r",
+							"pm.collectionVariables.set(\"TheNAME\",newName)\r",
+							"\r",
+							"pm.collectionVariables.set(\"Thetitle\",newTitle)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"{{TheID}}\",\r\n    \"name\": \"{{TheNAME}}\",\r\n    \"title\": \"{{Thetitle}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/books/{{TheID}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"books",
+						"{{TheID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/books/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"books",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ubdat book",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 2,\r\n    \"name\" : \"math\",\r\n    \"title\" :\"plus\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/books/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"books",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "translate",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"language\" :\"arabic\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/books/2/translation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"books",
+						"2",
+						"translation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add bookshop",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"shop_id\": 22,\r\n    \"city\": \"Amman\",\r\n    \"name\": \"Bookstore One\",\r\n    \"contactNumber\": \"123456789\",\r\n    \"email\": \"store1@example.com\",\r\n    \"Adress\": \"Street 1, Amman\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/bookshop",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"bookshop"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get bookshop id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/bookshop/id/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"bookshop",
+						"id",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get bookshop by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/bookshop/name/momen",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"bookshop",
+						"name",
+						"momen"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bookshop by email",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/bookshop/email/momenbh@aimn.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"bookshop",
+						"email",
+						"momenbh@aimn.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update name",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"momen\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/bookshop/name/22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"bookshop",
+						"name",
+						"22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ubdate email by id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"momenbh@aimn.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/bookshop/email/22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"bookshop",
+						"email",
+						"22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/cities",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"cities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete bookshop",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/bookshop/22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"bookshop",
+						"22"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "TheID",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "Thetitle",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "TheName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "TheNAME",
+			"value": ""
+		}
+	]
+}
